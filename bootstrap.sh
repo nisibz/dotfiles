@@ -1,39 +1,62 @@
 #!/bin/bash
 
-# Update and upgrade the system
-echo "Updating and upgrading system..."
-sudo apt update && sudo apt upgrade -y
+# Function to check if a command exists
+command_exists() {
+    dpkg -l | grep -qw "$1" || command -v "$1" >/dev/null 2>&1
+}
 
-# Install zsh
-echo "installing zsh"
-sudo apt install zsh
+# Install zsh if not already installed
+if command_exists zsh; then
+    echo "zsh is already installed"
+else
+    echo "Installing zsh..."
+    sudo apt install -y zsh
+fi
 
-# Install oh-my-zsh
-echo "Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install Oh My Zsh if not already installed
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh is already installed"
+else
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
-# Install oh-my-zsh plugin
-echo "Installing oh-my-zsh plugin"
-echo "Install zsh-autosuggestions"
+# Install Oh My Zsh plugins
+echo "Installing Oh My Zsh plugins..."
+
+# Install zsh-autosuggestions
+echo "Installing zsh-autosuggestions..."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-echo "Install zsh-syntax-highlighting"
+
+# Install zsh-syntax-highlighting
+echo "Installing zsh-syntax-highlighting..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-echo "Install you-should-use"
+
+# Install you-should-use
+echo "Installing you-should-use..."
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
-echo "Install zsh-bat"
+
+# Install zsh-bat
+echo "Installing zsh-bat..."
 git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
 
-# Install brew
-echo "Installing brew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install Homebrew if not already installed
+if command_exists brew; then
+    echo "Homebrew is already installed"
+else
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # Evaluate Homebrew shell environment
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# Install Homebrew's dependencies
-sudo apt-get install build-essential -y
-
-# Switch shell to zsh
-zsh
+# Install Homebrew's dependencies if not already installed
+if dpkg -l | grep -qw build-essential; then
+    echo "build-essential is already installed"
+else
+    echo "Installing build-essential..."
+    sudo apt-get install -y build-essential
+fi
 
 # Symlink dotfiles to home directory
 echo "Symlinking dotfiles..."
@@ -41,10 +64,16 @@ ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
 
 # Change default shell to zsh
-chsh -s "$(command -v zsh)"
+if [ "$SHELL" = "$(command -v zsh)" ]; then
+    echo "Default shell is already zsh"
+else
+    echo "Changing default shell to zsh..."
+    chsh -s "$(command -v zsh)"
+fi
 
 # Source the new .zshrc to apply changes
 echo "Sourcing .zshrc..."
-source ~/.zshrc
+zsh -c "source ~/.zshrc"
 
 echo "Bootstrap completed!"
+
