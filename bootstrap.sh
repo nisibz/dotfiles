@@ -12,6 +12,11 @@ sudo apt install zsh
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Install oh-my-zsh plugin
+echo "Installing oh-my-zsh plugin"
+echo "Install zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 # Install brew
 echo "Installing brew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -20,6 +25,9 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Install Homebrew's dependencies
 sudo apt-get install build-essential -y
+
+# Switch shell to zsh
+zsh
 
 # Symlink dotfiles to home directory
 echo "Symlinking dotfiles..."
