@@ -74,6 +74,9 @@ plugins=(
 	git
 	zsh-autosuggestions
 	history
+	zsh-syntax-highlighting
+	you-should-use
+	zsh-bat
 )
 
 source $ZSH/oh-my-zsh.sh
