@@ -62,6 +62,7 @@ fi
 echo "Symlinking dotfiles..."
 ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/.config ~/.config
 
 # Change default shell to zsh
 if [ "$SHELL" = "$(command -v zsh)" ]; then
