@@ -40,23 +40,6 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM
 echo "Installing zsh-bat..."
 git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat
 
-# Install Homebrew if not already installed
-if command_exists brew; then
-    echo "Homebrew is already installed"
-else
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    # Evaluate Homebrew shell environment
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# Install Homebrew's dependencies if not already installed
-if dpkg -l | grep -qw build-essential; then
-    echo "build-essential is already installed"
-else
-    echo "Installing build-essential..."
-    sudo apt-get install -y build-essential
-fi
 
 # Symlink dotfiles to home directory
 echo "Symlinking dotfiles..."
