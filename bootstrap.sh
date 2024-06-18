@@ -45,14 +45,18 @@ git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/cu
 echo "Symlinking dotfiles..."
 ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/.config ~/.config
+if [ ! -d "$HOME/.config" ]; then
+    echo "Creating .config directory..."
+    mkdir ~/.config
+fi
+ln -sf ~/.dotfiles/.config/nvim ~/.config/nvim
 
-# Change default shell to zsh
-if [ "$SHELL" = "$(command -v zsh)" ]; then
-    echo "Default shell is already zsh"
+# Install neovim if not already installed
+if command_exists nvim; then
+    echo "neovim is already installed"
 else
-    echo "Changing default shell to zsh..."
-    chsh -s "$(command -v zsh)"
+    echo "Installing neovim..."
+    sudo apt install -y neovim
 fi
 
 # Source the new .zshrc to apply changes
