@@ -180,6 +180,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 zinit snippet OMZ::plugins/yarn/yarn.plugin.zsh
 zinit snippet OMZ::plugins/docker/docker.plugin.zsh
 
