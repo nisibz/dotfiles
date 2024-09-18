@@ -14,4 +14,11 @@ return {
     -- vim.g.gpt_commit_ollama_model = '' -- ollama model
     -- vim.g.gpt_commit_ollama_url = '' -- explicitly setting ollama URL
   end,
+  keys = {
+    {
+      "<leader>gp",
+      "<cmd>GptCommit<cr>",
+      desc = "Commit with GPT",
+    },
+  },
 }
