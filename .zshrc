@@ -78,14 +78,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(
-#   git
-#   zsh-autosuggestions
-#   zsh-syntax-highlighting
-#   fast-syntax-highlighting
-#   zsh-autocomplete
-#   you-should-use
-#   tmux
-#   zsh-ssh
+#         git
+#        	zsh-autosuggestions
+#         zsh-syntax-highlighting
+#         fast-syntax-highlighting
+#         zsh-autocomplete
+#         you-should-use
+#         tmux
+#         zsh-ssh
 # )
 
 source $ZSH/oh-my-zsh.sh
@@ -183,6 +183,9 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 zinit snippet OMZ::plugins/yarn/yarn.plugin.zsh
 zinit snippet OMZ::plugins/docker/docker.plugin.zsh
+zinit snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
+zinit snippet OMZ::plugins/kubectl/kubectl.plugin.zsh
+# zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 
 zinit light djui/alias-tips
 zinit light zsh-users/zsh-syntax-highlighting
