@@ -29,4 +29,21 @@ keymaps(
   { noremap = true, silent = true, desc = "Insert console.log with selected text" }
 )
 
+-- ruby specific keymaps
+
+keymaps(
+  "n",
+  "<Leader>Cr",
+  [[:let @+ = substitute(expand('%:p'), getcwd() . '/', '', '') . ':' . line('.')<CR>]],
+  { noremap = true, silent = true, desc = "Copy rspec command to clipboard" }
+)
+
+-- -- copy file path with line number to clipboard
+-- keymaps(
+--   "n",
+--   "<Leader>cL",
+--   [[:let @+ = expand('%:p') . ':' . line('.')<CR>]],
+--   { noremap = true, silent = true, desc = "Copy file path with line number" }
+-- )
+
 keymaps("x", "p", [["_dP]], { noremap = true, silent = true, desc = "Paste without yanking" })
