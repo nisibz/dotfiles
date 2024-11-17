@@ -23,7 +23,7 @@ return {
     { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
     {
-      "<leader>aa",
+      "<leader>ac",
       function()
         return require("CopilotChat").toggle()
       end,
@@ -49,18 +49,18 @@ return {
       desc = "Quick Chat (CopilotChat)",
       mode = { "n", "v" },
     },
-    {
-      "<leader>ar",
-      "<cmd>CopilotChatReview<cr>",
-      desc = "Review with Copilot Chat",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>ao",
-      "<cmd>CopilotChatOptimize<cr>",
-      desc = "Optimize with Copilot Chat",
-      mode = { "n", "v" },
-    },
+    -- {
+    --   "<leader>ar",
+    --   "<cmd>CopilotChatReview<cr>",
+    --   desc = "Review with Copilot Chat",
+    --   mode = { "n", "v" },
+    -- },
+    -- {
+    --   "<leader>ao",
+    --   "<cmd>CopilotChatOptimize<cr>",
+    --   desc = "Optimize with Copilot Chat",
+    --   mode = { "n", "v" },
+    -- },
     -- -- Show help actions with telescope
     -- { "<leader>ad", M.pick("help"), desc = "Diagnostic Help (CopilotChat)", mode = { "n", "v" } },
     -- -- Show prompts actions with telescope
