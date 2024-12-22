@@ -6,7 +6,14 @@ return {
   opts = {
     provider = "openai",
     openai = {
-      model = "gpt-4o-mini",
+      model = "gpt-4o",
+      -- model = "o1-preview",
+    },
+    claude = {
+      endpoint = "https://api.anthropic.com",
+      model = "claude-3-5-sonnet-20241022",
+      temperature = 0,
+      -- max_tokens = 4096,
     },
     -- add any opts here
   },
@@ -45,6 +52,20 @@ return {
         file_types = { "markdown", "Avante" },
       },
       ft = { "markdown", "Avante" },
+    },
+  },
+  keys = {
+    {
+      "<leader>al",
+      "<cmd>AvanteSwitchProvider claude<cr>",
+      desc = "Switch to Claude provider",
+      mode = { "n", "v" },
+    },
+    {
+      "<leader>ao",
+      "<cmd>AvanteSwitchProvider openai<cr>",
+      desc = "Switch to OpenAI provider",
+      mode = { "n", "v" },
     },
   },
 }
