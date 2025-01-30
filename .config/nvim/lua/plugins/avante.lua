@@ -2,30 +2,51 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false, -- set this if you want to always pull the latest change
+  version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
   opts = {
+    -- add any opts here
     provider = "openai",
+    auto_suggestions_provider = "openai",
     openai = {
-      model = "gpt-4o",
+      -- endpoint = "https://api.deepseek.com",
+      -- model = "deepseek-chat",
+      model = "gpt-4o-mini",
+      temperature = 0,
+      -- api_key_name = "DEEPSEEK_API_KEY",
       -- model = "o1-preview",
     },
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-3-5-sonnet-20241022",
-      temperature = 0,
-      -- max_tokens = 4096,
+    -- deepseek = {
+    --   endpoint = "https://api.deepseek.com/v1",
+    --   model = "deepseek-chat",
+    --   temperature = 0,
+    --   api_key_name = "DEEPSEEK_API_KEY",
+    -- },
+    -- claude = {
+    --   endpoint = "https://api.anthropic.com",
+    --   model = "claude-3-5-sonnet-20241022",
+    --   temperature = 0,
+    --   -- max_tokens = 4096,
+    -- },
+    behaviour = {
+      auto_focus_sidebar = true,
+      auto_suggestions = true, -- Experimental stage
+      auto_suggestions_respect_ignore = false,
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = false,
+      minimize_diff = true,
     },
-    -- add any opts here
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
-    "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
@@ -52,20 +73,6 @@ return {
         file_types = { "markdown", "Avante" },
       },
       ft = { "markdown", "Avante" },
-    },
-  },
-  keys = {
-    {
-      "<leader>al",
-      "<cmd>AvanteSwitchProvider claude<cr>",
-      desc = "Switch to Claude provider",
-      mode = { "n", "v" },
-    },
-    {
-      "<leader>ao",
-      "<cmd>AvanteSwitchProvider openai<cr>",
-      desc = "Switch to OpenAI provider",
-      mode = { "n", "v" },
     },
   },
 }
