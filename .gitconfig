@@ -1,1 +1,5 @@
-/home/nantachai/.gitconfig
+[user]
+  name = Nantachai Sangadsri
+  email = bz.nantachai@gmail.com
+[init]
+  defaultBranch = main
