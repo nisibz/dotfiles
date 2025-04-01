@@ -3,3 +3,5 @@
   email = bz.nantachai@gmail.com
 [init]
   defaultBranch = main
+[core]
+	excludesfile = /home/nantachai/.gitignore_global
