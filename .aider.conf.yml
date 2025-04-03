@@ -1,0 +1,4 @@
+model: gpt-4o
+dark-mode: true
+auto-commits: false
+auto-lint: true
