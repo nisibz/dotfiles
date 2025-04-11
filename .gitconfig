@@ -1,7 +1,8 @@
-[user]
-  name = Nantachai Sangadsri
-  email = bz.nantachai@gmail.com
 [init]
   defaultBranch = main
 [core]
-	excludesfile = /home/nantachai/.gitignore_global
+	excludesfile = ~/.config/gitconfig/global.gitignore
+[includeIf "gitdir:~/"]
+  path = ~/.config/gitconfig/personal.gitconfig
+[includeIf "gitdir:~/Documents/works/"]
+  path = ~/.config/gitconfig/work.gitconfig
