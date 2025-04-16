@@ -8,19 +8,29 @@ enum layer_names {
     _FN
 };
 
+#define HM_ESC LCTL_T(KC_ESC)
+#define HM_A LGUI_T(KC_A)
+#define HM_S LALT_T(KC_S)
+#define HM_D LSFT_T(KC_D)
+#define HM_F LCTL_T(KC_F)
+#define HM_J RCTL_T(KC_J)
+#define HM_K RSFT_T(KC_K)
+#define HM_L RALT_T(KC_L)
+#define HM_SCLN RGUI_T(KC_SCLN)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_BASE] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-        MT(MOD_LCTL, KC_ESC),  MT(MOD_LGUI, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_D), MT(MOD_LCTL, KC_F), KC_G,    KC_H,    MT(MOD_RCTL, KC_J), MT(MOD_RSFT, KC_K), MT(MOD_LALT, KC_L), MT(MOD_RGUI, KC_SCLN), KC_QUOT,
+        HM_ESC,  HM_A,    HM_S,    HM_D,    HM_F,    KC_G,                               KC_H,    HM_J,    HM_K,    HM_L,    HM_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
                                             KC_LGUI, MO(_NAV), KC_SPC,           KC_SPC,  MO(_SYM), KC_RALT
     ),
     [_GAME] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-        MT(MOD_LCTL, KC_ESC),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        HM_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
                                             KC_LGUI, MO(_NAV), KC_SPC,           KC_SPC,  MO(_SYM), KC_RALT
     ),
