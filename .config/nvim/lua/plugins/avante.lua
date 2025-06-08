@@ -3,6 +3,7 @@ return {
   event = "VeryLazy",
   lazy = false,
   version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
+  enabled = false,
   opts = {
     -- add any opts here
     provider = "openai",
@@ -38,7 +39,7 @@ return {
     -- },
     behaviour = {
       auto_focus_sidebar = true,
-      auto_suggestions = true, -- Experimental stage
+      auto_suggestions = false, -- Experimental stage
       auto_suggestions_respect_ignore = false,
       auto_set_highlight_group = true,
       auto_set_keymaps = true,
