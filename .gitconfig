@@ -1,8 +1,9 @@
 [init]
   defaultBranch = main
 [core]
-	excludesfile = ~/.config/gitconfig/global.gitignore
-[includeIf "gitdir:~/"]
-  path = ~/.config/gitconfig/personal.gitconfig
+  excludesfile = ~/.config/gitconfig/global.gitignore
+[user]
+  name = Nantachai Sangadsri
+  email = bz.nantachai@gmail.com
 [includeIf "gitdir:~/Documents/works/"]
   path = ~/.config/gitconfig/work.gitconfig
