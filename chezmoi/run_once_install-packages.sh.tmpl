@@ -1,3 +1,7 @@
 #!/bin/bash
 
-{{ template "install-pacman-packages.sh.tmpl" }}
+# Install packages from pkglist.txt
+if command -v pacman &> /dev/null; then
+    echo "Installing packages with pacman..."
+    sudo pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
+fi
