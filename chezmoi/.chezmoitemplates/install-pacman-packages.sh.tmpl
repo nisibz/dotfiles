@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if [[ -f ~/pkglist.txt ]]; then
-  echo ">> Installing pacman packages..."
-  xargs -a ~/pkglist.txt sudo pacman -S --noconfirm
-fi
