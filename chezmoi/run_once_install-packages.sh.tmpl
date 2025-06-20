@@ -3,7 +3,7 @@
 # Install packages from pkglist.txt
 if command -v pacman &> /dev/null; then
     echo "Installing packages with pacman..."
-    pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
+    sudo pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
 fi
 
 # Setup nvm and install Node.js 20.11.1
