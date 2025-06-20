@@ -10,6 +10,8 @@ fi
 if command -v zsh &> /dev/null; then
     echo "Changing default shell to zsh..."
     chsh -s /usr/bin/zsh
+    echo "Starting zsh session..."
+    exec zsh
 fi
 
 # Setup nvm and install Node.js 20.11.1
