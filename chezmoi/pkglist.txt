@@ -1,10 +1,6 @@
 base
 base-devel
-bat
 git
-neovim
 nvm
 starship
-tmux
-vi
 zsh
