@@ -41,8 +41,7 @@ Personal dotfiles managed with [Chezmoi](https://www.chezmoi.io/) for a terminal
 
    # Configure Chezmoi to use local source
    cat > ~/.config/chezmoi/chezmoi.toml << EOF
-   [sourceDir]
-       path = "~/dotfiles/chezmoi"
+   sourceDir = "~/dotfiles/chezmoi"
    EOF
 
    # Initialize Chezmoi with local source
@@ -204,4 +203,3 @@ rm -rf ~/.local/share/nvim
 ## License
 
 MIT License - feel free to use and modify as needed.
-
