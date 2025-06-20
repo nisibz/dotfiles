@@ -9,7 +9,7 @@ fi
 # Change default shell to zsh
 if command -v zsh &> /dev/null; then
     echo "Changing default shell to zsh..."
-    chsh -s $(which zsh)
+    chsh -s /usr/bin/zsh
 fi
 
 # Setup nvm and install Node.js 20.11.1
