@@ -5,3 +5,13 @@ if command -v pacman &> /dev/null; then
     echo "Installing packages with pacman..."
     sudo pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
 fi
+
+# Setup nvm and install Node.js 20.11.1
+if command -v nvm &> /dev/null; then
+    echo "Setting up Node.js with nvm..."
+    source /usr/share/nvm/nvm.sh
+    nvm install 20.11.1
+    nvm use 20.11.1
+    nvm alias default 20.11.1
+    echo "Node.js 20.11.1 installed and set as default"
+fi
