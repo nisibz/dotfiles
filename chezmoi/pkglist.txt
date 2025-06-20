@@ -3,6 +3,8 @@ base-devel
 bat
 git
 neovim
+nvm
+startship
 tmux
 vi
 zsh
