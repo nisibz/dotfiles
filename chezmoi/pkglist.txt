@@ -1,0 +1,8 @@
+base
+base-devel
+bat
+git
+neovim
+tmux
+vi
+zsh
