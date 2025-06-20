@@ -6,6 +6,12 @@ if command -v pacman &> /dev/null; then
     sudo pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
 fi
 
+# Change default shell to zsh
+if command -v zsh &> /dev/null; then
+    echo "Changing default shell to zsh..."
+    chsh -s $(which zsh)
+fi
+
 # Setup nvm and install Node.js 20.11.1
 if command -v nvm &> /dev/null; then
     echo "Setting up Node.js with nvm..."
