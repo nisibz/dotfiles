@@ -18,10 +18,18 @@ if command -v nvm &> /dev/null; then
     echo "Node.js 20.11.1 installed and set as default"
 fi
 
-curl -L get.rvm.io | bash -s stable
-
-source ~/.profile
-
-rvm install 1.9.3
-
-rvm use 1.9.3 --default
+# Install RVM and Ruby 1.9.3
+if ! command -v rvm &> /dev/null; then
+    echo "Installing RVM..."
+    curl -sSL https://get.rvm.io | bash -s stable --ruby=1.9.3
+    source ~/.rvm/scripts/rvm
+    rvm use 1.9.3 --default
+    echo "RVM and Ruby 1.9.3 installed"
+else
+    echo "RVM already installed, ensuring Ruby 1.9.3 is available..."
+    source ~/.rvm/scripts/rvm
+    if ! rvm list | grep -q "1.9.3"; then
+        rvm install 1.9.3
+    fi
+    rvm use 1.9.3 --default
+fi
