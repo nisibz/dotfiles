@@ -4,3 +4,4 @@ git
 nvm
 starship
 zsh
+libyaml
