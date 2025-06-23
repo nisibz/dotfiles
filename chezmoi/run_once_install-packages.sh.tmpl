@@ -6,6 +6,8 @@ if command -v pacman &> /dev/null; then
     sudo pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
 fi
 
+source ~/.profile
+
 # Setup nvm and install Node.js 20.11.1
 if command -v nvm &> /dev/null; then
     echo "Setting up Node.js with nvm..."
