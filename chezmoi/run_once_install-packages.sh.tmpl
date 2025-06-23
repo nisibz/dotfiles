@@ -62,3 +62,26 @@ else
     fi
     rvm use 1.9.3 --default
 fi
+
+# Install GVM and Go latest
+if ! command -v gvm &> /dev/null; then
+    echo "Installing GVM..."
+    # Install GVM
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+    
+    # Source GVM and install Go if installation succeeded
+    if [ -f ~/.gvm/scripts/gvm ]; then
+        source ~/.gvm/scripts/gvm
+        gvm install go1.21.5 --default
+        echo "GVM and Go 1.21.5 installed successfully"
+    else
+        echo "GVM installation failed - scripts not found"
+    fi
+else
+    echo "GVM already installed, ensuring Go 1.21.5 is available..."
+    source ~/.gvm/scripts/gvm
+    if ! gvm list | grep -q "go1.21.5"; then
+        gvm install go1.21.5
+    fi
+    gvm use go1.21.5 --default
+fi
