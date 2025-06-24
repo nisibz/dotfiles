@@ -3,3 +3,4 @@
 CONVENTIONS.md
 *.private.*
 CLAUDE.md
+.claude/
