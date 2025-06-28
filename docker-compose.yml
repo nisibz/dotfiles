@@ -1,0 +1,16 @@
+services:
+  dotfiles:
+    build: .
+    container_name: dotfiles-dev
+    volumes:
+      - .:/home/archuser/dotfiles
+    working_dir: /home/archuser
+    stdin_open: true
+    tty: true
+    command: >
+      bash -c "
+        mkdir -p ~/.config/chezmoi &&
+        echo 'sourceDir = \"~/dotfiles/chezmoi\"' > ~/.config/chezmoi/chezmoi.toml &&
+        /bin/bash
+      "
+
