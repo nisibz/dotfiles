@@ -1,19 +1,10 @@
-eval "$(starship init zsh)"
+# Zsh Configuration
+# Main configuration file that sources modular configs
 
-# Load NVM
-if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
-    source "$HOME/.nvm/nvm.sh"
-elif [[ -s "/usr/share/nvm/nvm.sh" ]]; then
-    source "/usr/share/nvm/nvm.sh"
-elif [[ -s "/usr/share/nvm/init-nvm.sh" ]]; then
-    source "/usr/share/nvm/init-nvm.sh"
-fi
-
-# Load NVM bash completion
-[[ -s "$HOME/.nvm/bash_completion" ]] && source "$HOME/.nvm/bash_completion"
-
-# Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Load GVM
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+# Load modular configuration files
+source ~/.config/zshrc/init.conf
+source ~/.config/zshrc/options.conf
+source ~/.config/zshrc/zinit.conf
+source ~/.config/zshrc/plugins.conf
+source ~/.config/zshrc/aliases.conf
+source ~/.config/zshrc/languages.conf
