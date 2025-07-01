@@ -1,4 +1,4 @@
 #!/bin/bash
+docker compose down
 docker compose up -d
-docker exec -it dotfiles-dev /bin/zsh
-
+docker compose exec dotfiles /bin/zsh
