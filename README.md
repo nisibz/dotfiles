@@ -60,6 +60,54 @@ Personal dotfiles managed with [Chezmoi](https://www.chezmoi.io/) for a terminal
    chezmoi apply
    ```
 
+## Docker Testing
+
+For testing this chezmoi configuration without affecting your local environment, you can use Docker and Docker Compose.
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Usage
+
+1. **Start the development container**:
+
+   ```bash
+   ./connect.sh
+   ```
+
+   This script will:
+
+   - Stop any existing containers (`docker compose down`)
+   - Start a fresh container (`docker compose up -d`)
+   - Connect to the container (`docker compose exec`)
+
+2. **Apply the dotfiles**:
+
+   ```bash
+   chezmoi apply
+   ```
+
+3. **Start using the configured environment**:
+
+   ```bash
+   exec zsh
+   ```
+
+4. **Install tmux plugins** (first time only):
+   - Open tmux: `tmux`
+   - Press `prefix + I` (default prefix is `Ctrl-b`) to install plugins
+   - Wait for plugins to install
+
+### What the Docker setup provides
+
+- **Arch Linux base**: Clean Arch Linux environment
+- **Pre-installed tools**: chezmoi, neovim, zsh, git, and development tools
+- **AUR support**: yay AUR helper for additional packages
+- **Volume mapping**: Your dotfiles directory is mapped to `/home/archuser/dotfiles`
+- **Automatic setup**: chezmoi configuration is automatically initialized
+
 ## Usage
 
 ### Managing Dotfiles
@@ -99,9 +147,25 @@ Modular tmux setup with separate files for:
 - **Options**: Core settings and terminal configuration
 - **Keybindings**: Custom key mappings
 - **Theme**: Visual customization
-- **Plugins**: Plugin management
+- **Plugins**: Plugin management with TPM (Tmux Plugin Manager)
 
 Configuration is located in `~/.config/tmux/`.
+
+**First-time setup**: When you first open tmux, plugins need to be installed manually:
+
+1. Start tmux: `tmux`
+2. Press `prefix + I` (default prefix is `Ctrl-b`, so `Ctrl-b + I`)
+3. Wait for plugins to install (you'll see installation progress)
+4. Press `prefix + r` to reload tmux configuration
+
+**Included plugins**:
+
+- **vim-tmux-navigator**: Navigate between vim and tmux panes
+- **tmux-prefix-highlight**: Show when prefix key is pressed
+- **tmux-resurrect**: Persist tmux sessions after restart
+- **tmux-continuum**: Automatically save sessions every 15 minutes
+- **tmux-sessionist**: Session management shortcuts
+- **catppuccin-tmux**: Beautiful catppuccin theme
 
 ### Git Configuration
 
