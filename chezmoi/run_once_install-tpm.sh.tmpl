@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Install TPM (Tmux Plugin Manager)
+echo "Installing TPM (Tmux Plugin Manager)..."
+
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+if [ ! -d "$TPM_DIR" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "TPM installed successfully!"
+else
+    echo "TPM already installed, updating..."
+    cd "$TPM_DIR" && git pull
+    echo "TPM updated successfully!"
+fi
+
+echo "TPM installation complete. You can now use 'prefix + I' to install tmux plugins."
