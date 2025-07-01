@@ -4,34 +4,35 @@ FROM archlinux:latest AS base
 # Set non-interactive mode and configure pacman with multiple reliable mirrors
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo 'Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch' > /etc/pacman.d/mirrorlist && \
-    echo 'Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist && \
-    echo 'Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist && \
-    echo 'Server = https://mirror.leaseweb.net/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist && \
-    echo 'Server = https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
+  echo 'Server = https://mirror.rackspace.com/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist && \
+  echo 'Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist && \
+  echo 'Server = https://mirror.leaseweb.net/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist && \
+  echo 'Server = https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 
 # Initialize pacman keyring and update system
 RUN pacman-key --init && \
-    pacman-key --populate archlinux
+  pacman-key --populate archlinux
 
 # Update system with retry logic
 RUN for i in {1..3}; do pacman -Syu --noconfirm && break || sleep 5; done
 
 # Install essential packages
 RUN pacman -S --noconfirm --needed \
-        base \
-        base-devel \
-        git \
-        sudo \
-        wget \
-        curl && \
-    pacman -Scc --noconfirm
+  base \
+  base-devel \
+  git \
+  sudo \
+  wget \
+  curl && \
+  pacman -Scc --noconfirm
 
 # Install development tools
 RUN pacman -S --noconfirm --needed \
-        vim \
-        neovim \
-        chezmoi && \
-    pacman -Scc --noconfirm
+  vim \
+  neovim \
+  zsh \
+  chezmoi && \
+  pacman -Scc --noconfirm
 
 # Configure sudo for wheel group
 RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -50,8 +51,8 @@ WORKDIR /tmp
 
 # Install yay with optimized build flags
 RUN git clone --depth=1 https://aur.archlinux.org/yay.git && \
-    cd yay && \
-    makepkg -si --noconfirm --skippgpcheck
+  cd yay && \
+  makepkg -si --noconfirm --skippgpcheck
 
 # Final stage - copy only what we need
 FROM base AS final
@@ -68,13 +69,13 @@ RUN mkdir -p ~/.config ~/.cache ~/.local/share
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD pacman -Q yay > /dev/null || exit 1
+  CMD pacman -Q yay > /dev/null || exit 1
 
 # Default command
 CMD ["/bin/bash"]
 
 # Labels for metadata
 LABEL maintainer="archuser" \
-      description="Optimized Arch Linux development environment with yay AUR helper" \
-      version="1.0" \
-      arch="x86_64"
+  description="Optimized Arch Linux development environment with yay AUR helper" \
+  version="1.0" \
+  arch="x86_64"

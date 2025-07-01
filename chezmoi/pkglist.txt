@@ -6,3 +6,4 @@ starship
 zsh
 libyaml
 neovim
+eza

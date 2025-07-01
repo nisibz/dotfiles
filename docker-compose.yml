@@ -11,6 +11,5 @@ services:
       bash -c "
         mkdir -p ~/.config/chezmoi &&
         echo 'sourceDir = \"~/dotfiles/chezmoi\"' > ~/.config/chezmoi/chezmoi.toml &&
-        /bin/bash
+        /bin/zsh
       "
-
