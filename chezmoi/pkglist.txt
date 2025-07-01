@@ -7,3 +7,4 @@ zsh
 libyaml
 neovim
 eza
+tmux
