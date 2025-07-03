@@ -8,3 +8,5 @@ libyaml
 neovim
 eza
 tmux
+btop
+lazygit

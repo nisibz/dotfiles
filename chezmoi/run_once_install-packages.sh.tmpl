@@ -6,6 +6,12 @@ if command -v pacman &> /dev/null; then
     sudo pacman -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/pkglist.txt | grep -v '^#' | tr '\n' ' ')
 fi
 
+# Install AUR packages from aurlist.txt
+if command -v yay &> /dev/null && [ -f "{{ .chezmoi.sourceDir }}/aurlist.txt" ]; then
+    echo "Installing AUR packages with yay..."
+    yay -S --needed --noconfirm $(cat {{ .chezmoi.sourceDir }}/aurlist.txt | grep -v '^#' | tr '\n' ' ')
+fi
+
 # Run version manager installation scripts
 # bash {{ .chezmoi.sourceDir }}/scripts/install-nvm.sh
 # bash {{ .chezmoi.sourceDir }}/scripts/install-rvm.sh
