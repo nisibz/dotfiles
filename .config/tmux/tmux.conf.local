@@ -411,6 +411,8 @@ bind m run "cut -c3- '#{TMUX_CONF}' | sh -s _toggle_mouse" \; display 'mouse #{?
 # move status line to top
 #set -g status-position top
 
+# prefix highlight customization
+set -g @prefix_highlight_prefix_prompt "⌨"
 
 # -- tpm -----------------------------------------------------------------------
 
@@ -453,7 +455,8 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
-
+set -g @plugin 'odedlaz/tmux-onedark-theme'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 
 # -- custom variables ----------------------------------------------------------
 
