@@ -23,3 +23,4 @@ description: Create a git commit
 ## Constraints
 
 - DO NOT add Claude co-authorship footer to commits
+- Just oneline commit message
