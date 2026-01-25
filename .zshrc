@@ -6,10 +6,6 @@ alias c=clear
 alias cc=claude
 alias pn=pnpm
 
-alias mux=tmuxinator
-alias muxs='tmuxinator start'
-alias muxp='tmuxinator stop'
-
 # Directory navigation
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -62,6 +58,8 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::web-search
 zinit snippet OMZP::copyfile
 zinit snippet OMZP::copybuffer
+zinit snippet OMZP::tmux
+zinit snippet OMZP::tmuxinator
 zinit snippet OMZP::dirhistory
 zinit snippet OMZP::z
 zinit snippet OMZP::docker
@@ -80,5 +78,6 @@ zinit light "zsh-users/zsh-history-substring-search"
 # opencode
 export PATH=/Users/nantachai.s/.opencode/bin:$PATH
 
+export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
