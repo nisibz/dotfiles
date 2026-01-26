@@ -34,7 +34,6 @@ $fill\
 ([ ](mono4)\
 $cmd_duration\
 $time\
-$battery\
 [█](mono4))\
 $line_break$character"""
 
