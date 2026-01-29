@@ -8,12 +8,9 @@
 -- use `vim.keymap.set` instead
 local map = LazyVim.safe_keymap_set
 
--- rest.nvim
-map("n", "<leader>xr", "<cmd>Rest run<cr>", { desc = "Run REST request under cursor" })
-
 -- lazydocker
 if vim.fn.executable("lazydocker") == 1 then
-  map("n", "<leader>gd", function()
+  map("n", "<leader>fd", function()
     Snacks.terminal({ "lazydocker" })
   end, { desc = "LazyDocker" })
 end
