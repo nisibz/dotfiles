@@ -70,6 +70,10 @@ zinit light-mode for \
     MichaelAquilina/zsh-you-should-use \
     marlonrichert/zsh-autocomplete
 
+# Autocomplete settings
+zstyle ':autocomplete:*' min-delay 3
+zstyle ':autocomplete:*' min-input 2
+
 # Visual/Deferred Plugins (Loaded last for performance)
 zinit wait lucid atinit"zpcompinit; zpcdreplay" for \
     zdharma-continuum/fast-syntax-highlighting \
