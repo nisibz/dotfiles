@@ -65,10 +65,9 @@ zinit wait'!' lucid for \
 
 # Core Plugins
 zinit light-mode for \
-    zsh-users/zsh-autosuggestions \
     zsh-users/zsh-completions \
-    Aloxaf/fzf-tab \
-    MichaelAquilina/zsh-you-should-use
+    MichaelAquilina/zsh-you-should-use \
+    marlonrichert/zsh-autocomplete
 
 # Visual/Deferred Plugins (Loaded last for performance)
 zinit wait lucid atinit"zpcompinit; zpcdreplay" for \
