@@ -65,6 +65,7 @@ zinit wait'!' lucid for \
 
 # Core Plugins
 zinit light-mode for \
+    zsh-users/zsh-autosuggestions \
     zsh-users/zsh-completions \
     MichaelAquilina/zsh-you-should-use \
     marlonrichert/zsh-autocomplete
