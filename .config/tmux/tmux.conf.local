@@ -394,6 +394,30 @@ set -g @vim_navigator_mapping_up "C-k"
 set -g @vim_navigator_mapping_down "C-j"
 set -g @vim_navigator_mapping_prev ""  # removes the C-\ binding
 
+# Instant switch to a new tmux session directory that exist
+display-popup -E "tmux list-keys | cat"
+bind-key -r f run-shell "tmux neww ~/scripts/tmux-sessionizer"
+bind-key n command-prompt "new-session -s '%%'"
+bind-key C-t display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "zsh"
+bind-key C-g display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "lazygit"
+bind-key C-d display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "lazydocker"
+bind d display-menu -T "#[align=centre]Config" -x C -y C \
+    ".zshrc"            z  "display-popup -w 75% -h 75% -E 'nvim ~/.zshrc'" \
+    ".tmux.conf"        t  "display-popup -w 75% -h 75% -E 'nvim ~/.config/tmux/tmux.conf.local'" \
+    ".nvim"             v  "display-popup -d '~/dotfiles/.config/nvim' -w 90% -h 90% -E 'nvim ~/dotfiles/.config/nvim'" \
+    "quit"              q  ""
+
+# Alt+number to select window
+bind -n M-1 select-window -t 1
+bind -n M-2 select-window -t 2
+bind -n M-3 select-window -t 3
+bind -n M-4 select-window -t 4
+bind -n M-5 select-window -t 5
+bind -n M-6 select-window -t 6
+bind -n M-7 select-window -t 7
+bind -n M-8 select-window -t 8
+bind -n M-9 select-window -t 9
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
