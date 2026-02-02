@@ -95,6 +95,7 @@ color_orange='#d19a66'
 color_fg='#abb2bf'
 color_bg='#282c34'
 color_bg_alt='#665c54'
+color_bg_selection='#414858'
 
 # window style
 tmux_conf_theme_window_fg="default"
@@ -135,8 +136,8 @@ tmux_conf_theme_message_command_bg="$color_bg"
 tmux_conf_theme_message_command_attr="bold"
 
 # window modes style
-tmux_conf_theme_mode_fg="$color_fg"
-tmux_conf_theme_mode_bg="$color_bg"
+tmux_conf_theme_mode_fg="default"
+tmux_conf_theme_mode_bg="$color_bg_selection"
 tmux_conf_theme_mode_attr="bold"
 
 # status line style
@@ -154,7 +155,7 @@ tmux_conf_theme_status_attr="none"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
+tmux_conf_theme_terminal_title="#h  #S ● #I #W"
 
 # window status style
 #   - built-in variables are:
@@ -243,7 +244,7 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username}
 #     - #{username_ssh}
 #tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_left=" ❐ #S #{prefix}| ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #{pretty_pane_current_path} "
+tmux_conf_theme_status_left="  #S #{prefix}| ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #{pretty_pane_current_path} "
 tmux_conf_theme_status_right=" #{mouse} | %R | %d %b | #{username}#{root} | #{hostname} "
 
 # status left style
