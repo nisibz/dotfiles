@@ -402,6 +402,7 @@ bind-key n command-prompt "new-session -s '%%'"
 bind-key C-t display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "zsh"
 bind-key C-g display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "lazygit"
 bind-key C-d display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "lazydocker"
+bind-key C-m display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "glances"
 bind d display-menu -T "#[align=centre]Config" -x C -y C \
     ".zshrc"            z  "display-popup -w 75% -h 75% -E 'nvim ~/.zshrc'" \
     ".tmux.conf"        t  "display-popup -w 75% -h 75% -E 'nvim ~/.config/tmux/tmux.conf.local'" \
