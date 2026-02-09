@@ -409,6 +409,10 @@ bind d display-menu -T "#[align=centre]Config" -x C -y C \
     ".nvim"             v  "display-popup -d '~/dotfiles/.config/nvim' -w 90% -h 90% -E 'nvim ~/dotfiles/.config/nvim'" \
     "quit"              q  ""
 
+# change split binding from _ to |
+unbind _
+bind | split-window -h
+
 # Alt+number to select window
 bind -n M-1 select-window -t 1
 bind -n M-2 select-window -t 2
