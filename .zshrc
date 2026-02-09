@@ -26,6 +26,7 @@ path_add "$HOME/.local/bin"
 path_add "$HOME/.cargo/bin"
 path_add "$HOME/.opencode/bin"
 path_add "$HOME/fvm/default/bin"
+path_add "$HOME/go/bin"
 
 if [[ "$OSTYPE" == darwin* ]]; then
     path_add "/opt/homebrew/bin"
