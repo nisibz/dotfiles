@@ -4,6 +4,11 @@ export VISUAL='nvim'
 command -v nvim >/dev/null && export MANPAGER='nvim +Man!'
 alias n=$EDITOR
 
+##### ENVIRONMENT FILE #####
+if [ -f "$HOME/.env" ]; then
+  source "$HOME/.env"
+fi
+
 ##### HISTORY CONFIGURATION #####
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
