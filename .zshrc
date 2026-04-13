@@ -115,7 +115,7 @@ if command -v eza >/dev/null; then
     alias ltime='eza -1 --icons=always --sort=modified'
 fi
 
-# Package Management (auto-detects: brew, dnf, apt, pacman, yum, zypper)
+# Package Management (auto-detects: brew, dnf, apt, yay, pacman, yum, zypper)
 _detect_pm() {
     if command -v brew >/dev/null 2>&1; then
         echo "brew"; return
@@ -123,6 +123,8 @@ _detect_pm() {
         echo "dnf"; return
     elif command -v apt >/dev/null 2>&1; then
         echo "apt"; return
+    elif command -v yay >/dev/null 2>&1; then
+        echo "yay"; return
     elif command -v pacman >/dev/null 2>&1; then
         echo "pacman"; return
     elif command -v yum >/dev/null 2>&1; then
@@ -138,7 +140,7 @@ pkg() {
     [[ -z "$pm" ]] && { echo "Error: No supported package manager found" >&2; return 1; }
 
     local sudo=""
-    [[ "$pm" != "brew" ]] && sudo="sudo"
+    [[ "$pm" != "brew" && "$pm" != "yay" ]] && sudo="sudo"
 
     case "$1" in
         search)
@@ -165,7 +167,7 @@ pkg() {
                 apt)
                     $sudo $pm update && $sudo $pm upgrade "$@"
                     ;;
-                pacman)
+                yay|pacman)
                     $sudo $pm -Syu "$@"
                     ;;
                 zypper)
