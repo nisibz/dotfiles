@@ -33,6 +33,13 @@ path_add "$HOME/.opencode/bin"
 path_add "$HOME/fvm/default/bin"
 path_add "$HOME/go/bin"
 
+# NVM (Node Version Manager)
+if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
+    source /usr/share/nvm/init-nvm.sh
+elif [[ -f "$HOME/.nvm/nvm.sh" ]]; then
+    source "$HOME/.nvm/nvm.sh"
+fi
+
 if [[ "$OSTYPE" == darwin* ]]; then
     path_add "/opt/homebrew/bin"
     path_add "/opt/homebrew/sbin"
