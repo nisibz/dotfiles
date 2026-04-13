@@ -145,15 +145,36 @@ pkg() {
     case "$1" in
         search)
             shift
-            $pm search "$@"
+            case "$pm" in
+                yay|pacman)
+                    $pm -Ss "$@"
+                    ;;
+                *)
+                    $pm search "$@"
+                    ;;
+            esac
             ;;
         install|i)
             shift
-            $sudo $pm install "$@"
+            case "$pm" in
+                yay|pacman)
+                    $sudo $pm -S "$@"
+                    ;;
+                *)
+                    $sudo $pm install "$@"
+                    ;;
+            esac
             ;;
         remove|rm|uninstall)
             shift
-            $sudo $pm remove "$@"
+            case "$pm" in
+                yay|pacman)
+                    $sudo $pm -R "$@"
+                    ;;
+                *)
+                    $sudo $pm remove "$@"
+                    ;;
+            esac
             ;;
         update|upgrade|u)
             shift
@@ -177,11 +198,25 @@ pkg() {
             ;;
         info)
             shift
-            $pm info "$@"
+            case "$pm" in
+                yay|pacman)
+                    $pm -Si "$@"
+                    ;;
+                *)
+                    $pm info "$@"
+                    ;;
+            esac
             ;;
         list|ls)
             shift
-            $pm list "$@"
+            case "$pm" in
+                yay|pacman)
+                    $pm -Q "$@"
+                    ;;
+                *)
+                    $pm list "$@"
+                    ;;
+            esac
             ;;
         *)
             echo "Usage: pkg {search|install|remove|update|info|list} [package...]"
