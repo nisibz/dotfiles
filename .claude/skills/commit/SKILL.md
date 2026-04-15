@@ -1,7 +1,12 @@
 ---
-allowed-tools: Bash(git add:*), Bash(git status:*)
+name: commit
 description: Create a git commit
+when_to_use: When the user wants to commit changes to git. Always use for creating commits with appropriate commit messages.
 ---
+
+# Git Commit Skill
+
+Create a git commit with an appropriate commit message based on the changes.
 
 ## Context
 
