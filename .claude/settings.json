@@ -1,17 +1,14 @@
 {
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": [
-      "Read(~/.zshrc)",
-      "Read(**/.env.example)"
-    ],
+    "allow": ["Read(~/.zshrc)", "Read(**/.env.example)"],
     "deny": [
       "Bash(curl:*)",
       "Read(./.env)",
       "Read(./.env.*)",
       "Read(./secrets/**)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "default"
   },
   "alwaysThinkingEnabled": false,
   "enabledPlugins": {
