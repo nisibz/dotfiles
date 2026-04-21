@@ -34,10 +34,14 @@ path_add "$HOME/fvm/default/bin"
 path_add "$HOME/go/bin"
 
 # NVM (Node Version Manager)
-if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
-    source /usr/share/nvm/init-nvm.sh
-elif [[ -f "$HOME/.nvm/nvm.sh" ]]; then
-    source "$HOME/.nvm/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+
+# Load NVM (try Homebrew first, fallback to manual install)
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+    \. "/opt/homebrew/opt/nvm/nvm.sh"
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+elif [ -s "$NVM_DIR/nvm.sh" ]; then
+    \. "$NVM_DIR/nvm.sh"
 fi
 
 if [[ "$OSTYPE" == darwin* ]]; then
