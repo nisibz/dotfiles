@@ -13,5 +13,9 @@
   "alwaysThinkingEnabled": false,
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
   }
 }
