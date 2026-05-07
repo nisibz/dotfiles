@@ -88,11 +88,17 @@ fi
 # =========================
 # Context usage
 # =========================
-context_remaining=$(echo "$input" | jq -r '.context_window.remaining_percentage // 100')
+used_percentage=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
+max_ctx=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
+# Calculate used tokens from total input + output
+used_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens + .context_window.total_output_tokens // 0')
 
-if ( (context_remaining <20)); then
+used_k=$((used_tokens / 1000))
+max_k=$((max_ctx / 1000))
+
+if [ "$used_percentage" -ge 80 ]; then
   ctx_color=$RED
-elif ( (context_remaining <50)); then
+elif [ "$used_percentage" -ge 50 ]; then
   ctx_color=$YELLOW
 else
   ctx_color=$GREEN
@@ -119,7 +125,7 @@ api_duration_text=$(format_duration "$total_api_duration_ms" 2)
 os="${GREEN}${os_icon}${RESET}"
 dir="${RED}${dir_display}${RESET}"
 branch="${ORANGE}○${RESET} ${git_branch}"
-ctx="${ctx_color}󰘦 ${context_remaining}%${RESET}"
+ctx="${ctx_color}󰘦 ${used_k}k/${max_k}k (${used_percentage}%)${RESET}"
 git_change="${GREEN}+${lines_added}${RESET} ${RED}-${lines_removed}${RESET}"
 duration="${YELLOW}󰔛 ${duration_text}${RESET}"
 api_duration="${GRAY}󰇚 ${api_duration_text}${RESET}"
