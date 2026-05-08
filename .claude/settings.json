@@ -1,16 +1,25 @@
 {
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["Read(~/.zshrc)", "Read(**/.env.example)"],
-    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"],
+    "allow": [
+      "Read(~/.zshrc)",
+      "Read(**/.env.example)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ],
     "defaultMode": "default"
-  },
-  "alwaysThinkingEnabled": false,
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
-  }
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": false,
+  "model": "sonnet"
 }
