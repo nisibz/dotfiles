@@ -98,12 +98,22 @@ zinit wait lucid atinit"zpcompinit; zpcdreplay" for \
 
 ##### ALIASES #####
 alias c='clear'
-alias cc='claude'
 alias pn='pnpm'
 alias op='opencode'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# Claude CLI with profile support
+cc() {
+  local profile="${1:-default}"
+  [[ $# -gt 0 ]] && shift
+
+  (
+    source "$HOME/.claude/profiles/.env.${profile}"
+    exec claude "$@"
+  )
+}
 
 # Eza Logic
 if command -v eza >/dev/null; then
