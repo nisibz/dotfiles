@@ -8,9 +8,14 @@ switch_tab = "alt+1..9"
 split_vertical = "prefix+|"
 split_horizontal = "prefix+-"
 
+open_worktree= "prefix+shift+o"
+
 [ui.toast]
 delivery = "system"
 
 [ui]
 show_agent_labels_on_pane_borders = false
 agent_panel_scope = "all"
+
+[experimental]
+pane_history = false
