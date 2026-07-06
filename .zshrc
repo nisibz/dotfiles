@@ -44,6 +44,11 @@ elif [ -s "$NVM_DIR/nvm.sh" ]; then
     \. "$NVM_DIR/nvm.sh"
 fi
 
+# bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 if [[ "$OSTYPE" == darwin* ]]; then
     path_add "/opt/homebrew/bin"
     path_add "/opt/homebrew/sbin"
@@ -99,7 +104,7 @@ zinit wait lucid atinit"zpcompinit; zpcdreplay" for \
 ##### ALIASES #####
 alias c='clear'
 alias pn='pnpm'
-alias op='opencode'
+alias oc='opencode'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
